@@ -37,7 +37,7 @@ export default async function CheckInPage({ params }: PageProps) {
     passengers: booking.passengers.map((bp) => ({
       id: bp.id,
       name: `${bp.passenger.firstName} ${bp.passenger.lastName}`,
-      nationality: bp.passenger.nationality,
+      nationality: bp.passenger.nationality ?? "",
       paxType: bp.paxType,
       checkedIn: bp.checkedIn,
     })),

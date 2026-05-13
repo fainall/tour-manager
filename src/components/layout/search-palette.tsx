@@ -56,7 +56,7 @@ export const SearchPalette = forwardRef<SearchPaletteHandle>(function SearchPale
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {

@@ -54,8 +54,8 @@ export default async function PortalBookingPage({ params }: PageProps) {
     tourDescription: booking.tour.description,
     tourDuration: booking.tour.durationMinutes,
     meetingPoint: booking.tour.meetingPoint,
-    includedItems: booking.tour.includedItems,
-    excludedItems: booking.tour.excludedItems,
+    includedItems: (booking.tour.includedItems as string[]) ?? [],
+    excludedItems: (booking.tour.excludedItems as string[]) ?? [],
     tourDate: `${booking.tourDate.getFullYear()}-${String(booking.tourDate.getMonth() + 1).padStart(2, "0")}-${String(booking.tourDate.getDate()).padStart(2, "0")}`,
     departureTime: booking.departureTime,
     pickupPoint: booking.pickupPoint,
@@ -69,7 +69,7 @@ export default async function PortalBookingPage({ params }: PageProps) {
     checkInToken,
     passengers: booking.passengers.map((bp) => ({
       name: `${bp.passenger.firstName} ${bp.passenger.lastName}`,
-      nationality: bp.passenger.nationality,
+      nationality: bp.passenger.nationality ?? "",
       paxType: bp.paxType,
     })),
   };
